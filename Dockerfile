@@ -1,4 +1,4 @@
 FROM openjdk:11-jre-stretch
-ADD target/spring-petclinic-2.4.2.jar spring-petclinic-2.4.2.jar
+ADD target/spring-petclinic-3.0.0.jar spring-petclinic-3.0.0.jar
 EXPOSE 8080
-ENTRYPOINT [ "java", "-jar", "spring-petclinic-2.4.2.jar" ]
+ENTRYPOINT [ "java", "-jar", "spring-petclinic-3.0.0.jar" ]
