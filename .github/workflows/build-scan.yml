@@ -4,7 +4,8 @@ name: Container CI/CD
 
 jobs:
   build-image:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
+    environment: demo
     strategy:
       matrix:
         java: [ '17' ]
@@ -35,6 +36,7 @@ jobs:
         docker build -f ./Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/spring-petclinic:${{ github.run_number }} .
 
     - name: Scan image
+      if: ${{ vars.SCAN_ENABLED == 'true' }}
       uses: Azure/container-scan@v0
       with:
         image-name: ${{ secrets.ACR_LOGIN_SERVER }}/spring-petclinic:${{ github.run_number }}
